@@ -16,6 +16,6 @@ public interface WebDriverConfig extends Config {
     String browserVersion();
 
     @Key("baseUrl")
-    @DefaultValue("https://www.rollingmoto.ru/")
+    @DefaultValue("https://www.vtb.ru/")
     String baseUrl();
 }

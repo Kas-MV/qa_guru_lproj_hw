@@ -1,25 +1,18 @@
 package guru.qa.page.page_elements;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class HomePageElements {
 
     /**
-     * Название категории
+     * Категории
      */
-    public final ElementsCollection category = $$(".category");
+    public final ElementsCollection category = $$(".bQnwLi");
 
     /**
-     * Главное меню категорий
+     * Название категорий
      */
-    public final ElementsCollection menuButton = $$(".root-item");
-
-    /**
-     * Поле поиска
-     */
-    public final SelenideElement searchField = $("#title-search-input");
+    public final ElementsCollection productLabel = $$(".cYVgJq");
 }

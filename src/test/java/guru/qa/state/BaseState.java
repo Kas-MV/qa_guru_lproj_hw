@@ -4,8 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import guru.qa.config.WebDriverConfig;
 import guru.qa.page.HomePage;
-import guru.qa.page.SearchPage;
-import guru.qa.page.page_elements.HomePageElements;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -21,9 +19,6 @@ import static guru.qa.helpers.Attachments.*;
 public abstract class BaseState {
 
     public HomePage homePage = new HomePage();
-    public HomePageElements homePageElements = new HomePageElements();
-    public SearchPage searchPage = new SearchPage();
-
     static WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
     @BeforeAll
