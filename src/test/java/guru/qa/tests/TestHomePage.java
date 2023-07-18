@@ -7,7 +7,6 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static io.qameta.allure.Allure.step;
 
@@ -20,9 +19,10 @@ public class TestHomePage extends BaseState {
     @Owner("Kasimov.MV")
     @Severity(SeverityLevel.NORMAL)
     @CsvSource(value = {"Кредиты, Потребительские кредиты", "Карты, Банковские карты",
-            "Ипотека, Ипотека", "Автокредиты, Автокредиты", "Вклады и счета, Вклады и счета", "Инвестиции, Инвестиции"})
+            "Ипотека, Ипотека", "Автокредиты, Автокредиты", "Вклады и счета, Вклады и счета",
+            "Инвестиции, Инвестиции", "Онлайн-сервисы, Онлайн-сервисы", "Платежи и переводы, Платежи и переводы"})
     @ParameterizedTest(name = "Проверка отображения названия каталога {0}")
-    void checkCreditInfo(String product, String label) {
+    void testCheckCreditInfo(String product, String label) {
         step("1. Открыть главную страницу", () ->
                 homePage.openPage());
         step("2. Выбрать продукт", () ->
