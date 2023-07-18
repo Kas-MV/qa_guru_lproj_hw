@@ -2,8 +2,12 @@ package guru.qa.state;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import guru.qa.config.WebDriverConfig;
 import guru.qa.page.HomePage;
+import guru.qa.page.SearchPage;
+import guru.qa.page.page_elements.HomePageElements;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,19 +17,21 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static guru.qa.helpers.Attachments.*;
-import static java.lang.System.getProperty;
 
 public abstract class BaseState {
 
     public HomePage homePage = new HomePage();
+    public HomePageElements homePageElements = new HomePageElements();
+    public SearchPage searchPage = new SearchPage();
 
+    static WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
     @BeforeAll
     static void init() {
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://www.rollingmoto.ru/");
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browser = getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.baseUrl = webDriverConfig.baseUrl();
+        Configuration.browserSize = webDriverConfig.browserSize();
+        Configuration.browser = webDriverConfig.browser();
+        Configuration.browserVersion = webDriverConfig.browserVersion();
         Configuration.remote = System.getProperty("selenoid");
         Configuration.pageLoadStrategy = "eager";
 

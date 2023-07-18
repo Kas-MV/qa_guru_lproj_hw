@@ -1,25 +1,39 @@
 package guru.qa.page;
 
-import guru.qa.page.page_elements.HomePageElement;
+import guru.qa.page.page_elements.HomePageElements;
 
 import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Configuration.baseUrl;
+import static com.codeborne.selenide.Selenide.open;
 
 public class HomePage {
 
-    HomePageElement homePageElement = new HomePageElement();
+    HomePageElements homePageElements = new HomePageElements();
+
+    public void openPage() {
+        open(baseUrl);
+    }
+
+    public void clickSearchField() {
+        homePageElements.searchField.click();
+    }
 
     public void clickCatalogName(String catalogName) {
-        homePageElement.menuButton.find(text(catalogName)).click();
+        homePageElements.menuButton.find(text(catalogName)).click();
     }
 
     public void checkNameCatalog(String namePlates) {
-        homePageElement.menuButton.findBy(text(namePlates)).shouldHave(text(namePlates));
+        homePageElements.menuButton.findBy(text(namePlates)).shouldHave(text(namePlates));
     }
 
     public void checkCategoryList(List<String> catalogName) {
-        homePageElement.category.shouldHave(texts(catalogName));
+        homePageElements.category.shouldHave(texts(catalogName));
+    }
+
+    public void setTextEndPressEnter(String text) {
+        homePageElements.searchField.setValue(text).pressEnter();
     }
 }
